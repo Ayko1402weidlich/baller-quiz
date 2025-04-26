@@ -54,6 +54,7 @@ button {
 }
 
 button:hover {
-    background-color: #00BFFF;
-    box-shadow: 0 0 20px #00BFFF;
+    background-color: #1e1e1e; /* bleibt dunkel beim Hover */
+    box-shadow: 0 0 10px #00BFFF, 0 0 20px #00BFFF;
 }
+
