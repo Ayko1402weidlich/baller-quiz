@@ -1,8 +1,5 @@
 body {
-    background: url('background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Orbitron', sans-serif;
-    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(#001F3F, #000814);
     color: white;
     margin: 0;
     padding: 0;
@@ -57,5 +54,18 @@ button {
 button:hover {
     background-color: #00BFFF;
     box-shadow: 0 0 20px #00BFFF;
+}
+body {
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
 }
 
