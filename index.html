@@ -5,15 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baller Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Baller Quiz</h1>
-    <p>Dein Wissen. Dein Tempo. Dein Sieg.</p>
-    <p>Errate die Stars. Dominiere das Spielfeld.</p>
-    <button id="startBtn">Spiel Starten</button>
-    <button id="jokerBtn" style="display:none;">Joker nutzen</button>
-    <div id="gameArea" style="margin-top:20px;"></div>
-    <script src="script.js"></script>
+    <div class="container">
+        <h1>Baller Quiz</h1>
+        <input type="text" id="playerName" placeholder="Dein Name eingeben">
+        <div class="buttons">
+            <button id="guessPlayerBtn">Guess the Player</button>
+            <button id="stadtLandFlussBtn">Stadt Land Fluss</button>
+        </div>
+    </div>
 </body>
 </html>
