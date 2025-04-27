@@ -1,1 +1,31 @@
-<a href='multiplayer.html' class='back-button'>←</a><div class='container'><h1>Name eingeben</h1></div>
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name eingeben | Raum erstellen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script defer>
+    function saveName() {
+      const playerName = document.getElementById('playerName').value;
+      if (playerName.trim() === "") {
+        alert("Bitte gib deinen Namen ein!");
+        return;
+      }
+      localStorage.setItem("playerName", playerName);
+      window.location.href = "room.html";
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Dein Name</h1>
+        <input type="text" id="playerName" placeholder="Name eingeben">
+        <div class="buttons">
+            <button onclick="saveName()">Weiter</button>
+        </div>
+    </div>
+</body>
+</html>
