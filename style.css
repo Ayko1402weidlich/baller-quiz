@@ -1,6 +1,5 @@
-
 body {
-    background: linear-gradient(#001F3F, #000814), url('background.jpg') no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('background.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: 'Orbitron', sans-serif;
     color: white;
@@ -20,8 +19,15 @@ body {
     gap: 30px;
 }
 
-h1, h2 {
+h1 {
     font-family: 'Orbitron', sans-serif;
+    font-size: 90px;
+    margin: 0;
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 40px;
     margin: 0;
 }
 
@@ -35,6 +41,7 @@ input[type="text"] {
     background-color: #1e1e1e;
     color: white;
     outline: none;
+    font-family: 'Roboto', sans-serif;
 }
 
 .buttons {
@@ -46,16 +53,16 @@ input[type="text"] {
 button {
     background-color: #1e1e1e;
     color: white;
-    border: none;
-    border-radius: 10px;
+    border: 2px solid #00BFFF;
+    border-radius: 12px;
     padding: 20px 40px;
     font-size: 20px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
     font-family: 'Roboto', sans-serif;
 }
 
 button:hover {
-    background-color: #00BFFF;
-    box-shadow: 0 0 20px #00BFFF;
+    background-color: #1e1e1e; /* Hintergrund bleibt dunkel */
+    box-shadow: 0 0 10px #00BFFF, 0 0 20px #00BFFF; /* Nur Rand Glow */
 }
