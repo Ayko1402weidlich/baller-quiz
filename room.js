@@ -32,6 +32,9 @@ async function createRoom() {
   });
 
   document.getElementById('roomCode').textContent = code;
+  localStorage.setItem('roomCode', code); 
+  window.location.href = "lobby.html";
+
 }
 
 createRoom();
