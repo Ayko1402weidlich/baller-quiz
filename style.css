@@ -1,5 +1,6 @@
+
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpg') no-repeat center center fixed;
+    background: linear-gradient(#001F3F, #000814), url('background.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: 'Orbitron', sans-serif;
     color: white;
@@ -19,8 +20,8 @@ body {
     gap: 30px;
 }
 
-h1 {
-    font-size: 80px;
+h1, h2 {
+    font-family: 'Orbitron', sans-serif;
     margin: 0;
 }
 
@@ -51,10 +52,10 @@ button {
     font-size: 20px;
     cursor: pointer;
     transition: 0.3s;
+    font-family: 'Roboto', sans-serif;
 }
 
 button:hover {
-    background-color: #1e1e1e; /* bleibt dunkel beim Hover */
-    box-shadow: 0 0 10px #00BFFF, 0 0 20px #00BFFF;
+    background-color: #00BFFF;
+    box-shadow: 0 0 20px #00BFFF;
 }
-

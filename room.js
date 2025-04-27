@@ -1,3 +1,4 @@
+
 const firebaseConfig = {
   apiKey: "AIzaSyCDW9uh-jSALffSqs5Yqdg3lCkYUodD-So",
   authDomain: "ballerquizonline.firebaseapp.com",
@@ -8,11 +9,9 @@ const firebaseConfig = {
   measurementId: "G-BLL620M4TL"
 };
 
-// Firebase initialisieren
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// Funktion zum Raumcode erstellen
 function generateRoomCode() {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let code = "";
@@ -22,7 +21,6 @@ function generateRoomCode() {
   return code;
 }
 
-// Raum in Firestore speichern
 async function createRoom() {
   const code = generateRoomCode();
   const name = prompt("Wie heißt du?");
