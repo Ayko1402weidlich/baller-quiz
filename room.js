@@ -1,4 +1,3 @@
-
 const firebaseConfig = {
   apiKey: "AIzaSyCDW9uh-jSALffSqs5Yqdg3lCkYUodD-So",
   authDomain: "ballerquizonline.firebaseapp.com",
@@ -23,7 +22,7 @@ function generateRoomCode() {
 
 async function createRoom() {
   const code = generateRoomCode();
-  const name = prompt("Wie heißt du?");
+  const name = localStorage.getItem("playerName") || "Host"; // Holt den gespeicherten Namen
 
   await db.collection("rooms").doc(code).set({
     code: code,
