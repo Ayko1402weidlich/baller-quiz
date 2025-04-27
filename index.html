@@ -16,5 +16,30 @@
             <button id="stadtLandFlussBtn">Stadt Land Fluss</button>
         </div>
     </div>
-</body>
+
+   
+    <!-- Firebase SDKs einbinden -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+<script>
+  // Dein Firebase-Konfigurationsobjekt
+  const firebaseConfig = {
+    apiKey: "AIzaSyCDW9uh-jSALffSqs5Yqdg3lCkYUodD-So",
+    authDomain: "ballerquizonline.firebaseapp.com",
+    projectId: "ballerquizonline",
+    storageBucket: "ballerquizonline.firebasestorage.app",
+    messagingSenderId: "863084755703",
+    appId: "1:863084755703:web:2b79f2da21ffba0998b1f2",
+    measurementId: "G-BLL620M4TL"
+  };
+
+  // Firebase initialisieren
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+
+
+
+</body>   
 </html>
