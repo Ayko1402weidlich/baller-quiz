@@ -23,8 +23,8 @@ async function joinRoom() {
     await roomRef.update({
       players: firebase.firestore.FieldValue.arrayUnion(name)
     });
-    alert("Beigetreten! Viel Spaß!");
-    window.location.href = "index.html";
+   localStorage.setItem('roomCode', code);
+  window.location.href = "lobby.html";
   } else {
     alert("Raum nicht gefunden!");
   }
