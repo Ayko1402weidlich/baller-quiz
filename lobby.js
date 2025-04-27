@@ -39,13 +39,17 @@ roomRef.onSnapshot(doc => {
     });
   }
 
-  if (data && data.host === playerName) {
+  if (data && data.started) {
+    window.location.href = "guess_the_player.html";
+  }
+
+  if (data && data.host === playerName && !data.started) {
     hostOptions.innerHTML = '<button onclick="startGame()">Spiel starten</button>';
-  } else {
+  } else if (!data.started) {
     hostOptions.innerHTML = '<p style="font-family: Roboto, sans-serif;">Warten auf Host...</p>';
   }
 });
 
-function startGame() {
-  alert("Spiel wird gestartet! (Hier später Weiterleitung ins Spiel)");
+async function startGame() {
+  await roomRef.update({ started: true });
 }
