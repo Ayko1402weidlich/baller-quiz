@@ -3,26 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guess the Player | Baller Quiz</title>
+  <title>Baller Quiz | Guess the Player</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="guess_the_player.js" defer></script>
 </head>
-<body>
-  <div class="container">
-    <h1>Guess the Player</h1>
-    <canvas id="playerCanvas" width="300" height="400" style="border: 2px solid #00FF00;"></canvas>
-    <div class="progress-bar">
-      <div id="progress" class="progress"></div>
+<body style="background-color: #d3d3d3; margin:0; padding:0;">
+  <div class="container" style="display:flex; flex-direction:column; align-items:center; gap:20px; padding-top:20px;">
+    
+    <div id="timerBarContainer" style="width: 320px; height: 10px; background-color: #555;">
+      <div id="timerBar" style="height: 100%; background-color: red; width: 100%;"></div>
     </div>
-    <div class="buttons">
-      <button id="buzzerButton">Buzzern!</button>
+
+    <canvas id="playerCanvas" width="300" height="300" style="border: 2px solid #00FF00; border-radius: 50%;"></canvas>
+
+    <div id="feedback" style="font-size: 24px; font-weight: bold; height: 30px;"></div>
+
+    <div id="answerInput" style="display:none;">
+      <input type="text" id="playerGuess" placeholder="Spieler Nachname eingeben..." style="padding:10px; font-size:16px;">
+      <button onclick="submitGuess()" style="padding:10px; font-size:16px;">Antwort abgeben</button>
     </div>
-    <div id="answerInput" style="display: none;">
-      <input type="text" id="playerGuess" placeholder="Spieler Nachname eingeben...">
-      <button onclick="submitGuess()">Antwort abgeben</button>
-    </div>
-    <p id="scoreDisplay">Punkte: 0</p>
+
+    <button id="buzzerButton" style="padding:15px 30px; font-size:20px;">Buzzern!</button>
+  </div>
+
+  <div style="position: absolute; top: 20px; right: 20px; background: white; border-radius: 20px; padding: 20px;">
+    <h3>Punkte</h3>
+    <div id="scoreTable" style="font-size: 20px;">Du: 0</div>
   </div>
 </body>
 </html>
+
