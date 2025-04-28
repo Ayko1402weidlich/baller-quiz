@@ -1,18 +1,20 @@
 const canvas = document.getElementById('playerCanvas');
 const ctx = canvas.getContext('2d');
-const progress = document.getElementById('progress');
 const buzzerButton = document.getElementById('buzzerButton');
 const answerInput = document.getElementById('answerInput');
-const scoreDisplay = document.getElementById('scoreDisplay');
+const scoreTable = document.getElementById('scoreTable');
+const feedback = document.getElementById('feedback');
+const timerBar = document.getElementById('timerBar');
 
 let interval;
-let progressValue = 0;
+let timerInterval;
+let progressValue = 100;
 let pixelation = 30;
 let currentRound = 0;
 let score = 0;
 let players = [];
 
-const apiKey = "2d49fc5ff0a0077008d3ac2954a3563b"; // Dein API Key
+const apiKey = "2d49fc5ff0a0077008d3ac2954a3563b";
 
 async function fetchPlayers() {
   try {
@@ -22,14 +24,17 @@ async function fetchPlayers() {
       }
     });
     const data = await response.json();
-    players = data.response.slice(0, 10).map(player => ({
-      name: player.player.lastname.toLowerCase(),
-      img: player.player.photo
-    }));
+    players = data.response
+      .filter(player => ["ronaldo", "messi", "neymar", "mbappe", "haaland", "kane", "benzema", "lewandowski", "debruyne", "vinicius"].includes(player.player.lastname.toLowerCase()))
+      .slice(0, 10)
+      .map(player => ({
+        name: player.player.lastname.toLowerCase(),
+        img: player.player.photo
+      }));
     loadPlayer();
   } catch (error) {
     console.error("Fehler beim Laden der Spieler:", error);
-    alert("Fehler beim Laden der Spieler. Bitte später versuchen.");
+    alert("Fehler beim Laden der Spieler.");
   }
 }
 
@@ -78,25 +83,35 @@ function drawPixelated(pixelSize) {
 }
 
 function startProgress() {
-  progressValue = 0;
+  progressValue = 100;
   pixelation = 30;
+  timerBar.style.width = '100%';
+  
   interval = setInterval(() => {
-    progressValue += 0.5;
-    pixelation -= 0.2;
+    pixelation -= 1;
     if (pixelation < 1) pixelation = 1;
-    if (progressValue > 100) progressValue = 100;
-    drawPixelated(Math.floor(pixelation));
-    progress.style.width = progressValue + '%';
-    if (progressValue >= 100) {
+    drawPixelated(pixelation);
+  }, 100);
+
+  timerInterval = setInterval(() => {
+    progressValue -= 2;
+    timerBar.style.width = progressValue + "%";
+    if (progressValue <= 0) {
       clearInterval(interval);
+      clearInterval(timerInterval);
       buzzerButton.disabled = true;
-      answerInput.style.display = 'block';
+      showFeedback(false, "Zeit abgelaufen! Richtige Antwort: " + capitalize(currentPlayer.name));
+      setTimeout(() => {
+        currentRound++;
+        resetRound();
+      }, 2000);
     }
   }, 100);
 }
 
 buzzerButton.addEventListener('click', () => {
   clearInterval(interval);
+  clearInterval(timerInterval);
   buzzerButton.disabled = true;
   answerInput.style.display = 'block';
 });
@@ -104,37 +119,48 @@ buzzerButton.addEventListener('click', () => {
 function submitGuess() {
   const guess = document.getElementById('playerGuess').value.trim().toLowerCase();
   if (guess === currentPlayer.name) {
-    if (progressValue <= 33) {
+    if (progressValue >= 66) {
       score += 3;
-    } else if (progressValue <= 66) {
+    } else if (progressValue >= 33) {
       score += 2;
     } else {
       score += 1;
     }
-    alert("RICHTIG! +" + (progressValue <= 33 ? 3 : (progressValue <= 66 ? 2 : 1)) + " Punkte!");
+    showFeedback(true, "RICHTIG!");
   } else {
-    alert("FALSCH! 0 Punkte.");
+    showFeedback(false, "FALSCH! Richtige Antwort: " + capitalize(currentPlayer.name));
   }
-  currentRound++;
   updateScore();
-  resetRound();
+  currentRound++;
+  setTimeout(() => {
+    resetRound();
+  }, 2000);
+}
+
+function showFeedback(correct, message) {
+  feedback.style.color = correct ? "green" : "red";
+  feedback.textContent = message;
 }
 
 function resetRound() {
   buzzerButton.disabled = false;
   answerInput.style.display = 'none';
   document.getElementById('playerGuess').value = "";
+  feedback.textContent = "";
   loadPlayer();
 }
 
 function updateScore() {
-  scoreDisplay.textContent = "Punkte: " + score;
+  scoreTable.textContent = "Du: " + score;
 }
 
 function endGame() {
-  alert("Runde beendet! Deine Gesamtpunktzahl: " + score);
-  window.location.href = "index.html";
+  feedback.style.color = "black";
+  feedback.textContent = "Spiel beendet! Deine Gesamtpunkte: " + score;
 }
 
-// Direkt beim Laden Spieler holen
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 fetchPlayers();
