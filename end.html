@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baller Quiz | Ende</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="background: url('stadion.jpg') no-repeat center center fixed; background-size: cover; color: white;">
+  <div class="container">
+    <h1>Spiel Beendet!</h1>
+    <h2>Deine Gesamtpunkte:</h2>
+    <div id="finalScore" style="font-size: 50px; margin-top: 20px;">0</div>
+  </div>
+
+  <script>
+    document.getElementById('finalScore').textContent = localStorage.getItem("finalScore") + " Punkte";
+  </script>
+</body>
+</html>
