@@ -155,8 +155,8 @@ function updateScore() {
 }
 
 function endGame() {
-  feedback.style.color = "black";
-  feedback.textContent = "Spiel beendet! Deine Gesamtpunkte: " + score;
+  localStorage.setItem("finalScore", score);
+  window.location.href = "end.html"; // Weiterleitung auf End-Seite
 }
 
 function capitalize(string) {
