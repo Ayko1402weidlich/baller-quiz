@@ -1,43 +1,124 @@
 body {
-    background: url('background.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background-color: #121212;
     font-family: 'Orbitron', sans-serif;
-    color: white;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
+    color: white;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+#playerCanvas {
+    border-radius: 15px;
+    border: 3px solid black;
+    width: 300px;
+    height: 300px;
+}
+
+#timerBarContainer {
+    width: 600px;
+    height: 20px;
+    background-color: #333;
+    border: 2px solid black;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#timerBar {
+    height: 100%;
+    background: linear-gradient(to right, white, red);
+    width: 100%;
+    transition: width 0.1s linear;
+}
+
+#feedback {
+    height: 30px;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#answerInput input {
+    padding: 10px;
+    width: 300px;
+    font-size: 20px;
+    border: 2px solid #00FF00;
+    border-radius: 10px;
+    background-color: #1e1e1e;
+    color: white;
+    text-align: center;
+}
+
+#answerInput button {
+    padding: 10px 20px;
+    font-size: 20px;
+    margin-top: 10px;
+    border: 2px solid #00FF00;
+    background: none;
+    color: #00FF00;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#answerInput button:hover {
+    background-color: #00FF00;
+    color: black;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background: none;
+    color: #00FF00;
+    cursor: pointer;
+    border: 2px solid #00FF00;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: #00FF00;
+    color: black;
+}
+
+#scoreBox {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    color: black;
+    font-size: 24px;
 }
 
 h1 {
-    font-size: 80px;
-    margin: 0;
+    font-size: 60px;
+    margin: 20px 0 10px;
 }
 
-input[type="text"] {
-    padding: 15px;
-    width: 350px;
-    border: none;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 22px;
-    background-color: #1e1e1e;
-    color: white;
-    outline: none;
+h2 {
+    font-size: 36px;
+    margin: 10px 0;
 }
 
-.buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+#finalScore {
+    font-size: 48px;
+    margin-top: 20px;
 }
