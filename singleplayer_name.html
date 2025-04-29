@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Einzelspieler | Baller Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dein Name</h1>
+        <input type="text" placeholder="Name eingeben" id="playerName">
+        <button onclick="startSingleplayer()">Weiter</button>
+    </div>
+    <script>
+        function startSingleplayer() {
+            const name = document.getElementById('playerName').value.trim();
+            if (name) {
+                localStorage.setItem('playerName', name);
+                window.location.href = 'guess_the_player.html';
+            } else {
+                alert('Bitte gib einen Namen ein!');
+            }
+        }
+    </script>
+</body>
+</html>

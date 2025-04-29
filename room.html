@@ -3,19 +3,24 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raum erstellen | Baller Quiz</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap" rel="stylesheet">
+    <title>Lobby | Baller Quiz</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-    <script src="room.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <h1>Dein Raumcode:</h1>
-        <h2 id="roomCode" style="font-family: 'Roboto', sans-serif;">...</h2>
-        <button onclick="window.location.href='index.html'">Zurück zur Startseite</button>
+        <h1>Lobby</h1>
+        <p>Raum: <span id="roomCode"></span></p>
+        <div id="players"></div>
+        <button onclick="startGame()">Spiel starten</button>
     </div>
+    <script>
+        document.getElementById('roomCode').textContent = Math.random().toString(36).substring(2, 8).toUpperCase();
+        const playerName = localStorage.getItem('playerName');
+        document.getElementById('players').innerHTML = `<p>${playerName}</p>`;
+
+        function startGame() {
+            window.location.href = 'guess_the_player.html';
+        }
+    </script>
 </body>
 </html>

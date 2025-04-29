@@ -1,30 +1,80 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Baller Quiz | Guess the Player</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="guess_the_player.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Guess the Player | Baller Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .game-container {
+            text-align: center;
+            color: white;
+        }
+        #playerImage {
+            width: 220px;
+            height: 220px;
+            margin: 20px auto;
+            object-fit: cover;
+            border-radius: 15px;
+            filter: blur(25px);
+            transition: filter 3s linear;
+        }
+        #timeBar {
+            width: 80%;
+            height: 20px;
+            background: white;
+            border: 2px solid black;
+            margin: 20px auto;
+            position: relative;
+        }
+        #progress {
+            height: 100%;
+            background: red;
+            width: 0%;
+        }
+        #buzzer {
+            padding: 12px 30px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <div id="timerBarContainer">
-      <div id="timerBar"></div>
+<body style="background-color:#111;">
+    <div class="game-container">
+        <h1>Guess the Player</h1>
+        <div id="timeBar"><div id="progress"></div></div>
+        <img id="playerImage" src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg" alt="Spieler">
+        <br>
+        <button id="buzzer" onclick="buzz()">Buzzern!</button>
+        <div id="result"></div>
     </div>
-    <canvas id="playerCanvas" width="300" height="300"></canvas>
-    <div id="feedback"></div>
-    <div id="answerInput">
-      <input type="text" id="playerGuess" placeholder="Spieler Nachname eingeben...">
-      <button onclick="submitGuess()">Antwort abgeben</button>
-    </div>
-    <button id="buzzerButton">Buzzern!</button>
-  </div>
 
-  <div id="scoreBox">
-    <h3>Punkte</h3>
-    <div id="scoreTable">Du: 0</div>
-  </div>
+    <script>
+        let progress = 0;
+        let interval = setInterval(() => {
+            progress += 1;
+            document.getElementById('progress').style.width = progress + '%';
+            if (progress >= 100) {
+                clearInterval(interval);
+                showAnswer(false);
+            }
+        }, 100);
+
+        function buzz() {
+            clearInterval(interval);
+            document.getElementById('playerImage').style.filter = "blur(0px)";
+            const name = prompt("Wer ist das? (Nachname reicht)");
+            if (name.toLowerCase().includes("ronaldo")) {
+                showAnswer(true);
+            } else {
+                showAnswer(false);
+            }
+        }
+
+        function showAnswer(correct) {
+            const result = document.getElementById('result');
+            result.innerHTML = correct ? "<h2 style='color:lime;'>RICHTIG!</h2>" : "<h2 style='color:red;'>FALSCH! Das war Cristiano Ronaldo.</h2>";
+        }
+    </script>
 </body>
 </html>
