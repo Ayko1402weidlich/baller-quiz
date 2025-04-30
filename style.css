@@ -1,1 +1,1 @@
-/* Style für Layout, Buttons, Chat */
+body{margin:0;padding:0;background:#111;color:white;font-family:sans-serif;text-align:center;} .container{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;} button{padding:10px 20px;border:2px solid #00ff00;background:none;color:#00ff00;border-radius:10px;cursor:pointer;} button:hover{background:#00ff00;color:#111;}
