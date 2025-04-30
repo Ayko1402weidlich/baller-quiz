@@ -1,18 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Einzelspieler | Baller Quiz</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dein Name | Baller Quiz</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Einzelspieler Modus</h1>
-        <p style="font-family: 'Roboto', sans-serif;">Hier startet später dein Einzelspieler-Quiz!</p>
-        <button onclick="window.location.href='index.html'">Zurück zur Startseite</button>
-    </div>
+  <div class="container">
+    <h1>Dein Name</h1>
+    <input type="text" id="playerName" placeholder="Name eingeben" required />
+    <button onclick="startSoloGame()">Weiter</button>
+  </div>
+
+  <script>
+    function startSoloGame() {
+      const name = document.getElementById('playerName').value.trim();
+      if (name === "") {
+        alert("Bitte gib deinen Namen ein.");
+        return;
+      }
+      localStorage.setItem("playerName", name);
+      window.location.href = "guess_the_player.html";
+    }
+  </script>
 </body>
 </html>
