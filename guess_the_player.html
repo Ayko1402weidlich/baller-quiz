@@ -1,1 +1,22 @@
-<!-- Spielansicht mit Zeitbalken, Bild, Buzz -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Guess the Player</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="guess_the_player.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <div id="timerBar"><div id="progress"></div></div>
+    <button id="buzzer">Buzz</button>
+    <div id="answerBox" style="display:none;">
+      <input type="text" id="answer" placeholder="Spielername...">
+      <button onclick="checkAnswer()">Antwort senden</button>
+    </div>
+    <div id="feedback"></div>
+  </div>
+</body>
+</html>

@@ -3,21 +3,21 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Multiplayer</title>
+  <title>Einzelspieler</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>Dein Name</h1>
     <input type="text" id="playerName" placeholder="Name eingeben">
-    <button onclick="startMulti()">Weiter</button>
+    <button onclick="start()">Weiter</button>
   </div>
   <script>
-    function startMulti() {
+    function start() {
       const name = document.getElementById('playerName').value.trim();
       if (name) {
         localStorage.setItem('playerName', name);
-        window.location.href = 'room.html';
+        window.location.href = 'guess_the_player.html';
       } else {
         alert('Name eingeben!');
       }

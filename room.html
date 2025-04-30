@@ -1,1 +1,23 @@
-<!-- Lobby mit Raumcode und Chat -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lobby</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Lobby</h1>
+    <p id="roomCode">Raumcode: <strong>ABC123</strong></p>
+    <ul id="players"><li>Du (Host)</li></ul>
+    <textarea placeholder="Chat schreiben..."></textarea>
+    <button onclick="startGame()">Spiel starten</button>
+  </div>
+  <script>
+    function startGame() {
+      window.location.href = 'guess_the_player.html';
+    }
+  </script>
+</body>
+</html>
