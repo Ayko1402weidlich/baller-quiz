@@ -118,6 +118,7 @@ function capitalize(str) {
 window.onload = () => {
   startRound();
 };
+
 let steps = 400; // 40 Sekunden
 let tick = 100; // 100ms pro Schritt
 let step = 0;
@@ -134,3 +135,4 @@ timerInterval = setInterval(() => {
     nextRound();
   }
 }, tick);
+
