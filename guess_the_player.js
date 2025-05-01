@@ -25,6 +25,7 @@ function startRound() {
   currentPlayer = playerImages[Math.floor(Math.random() * playerImages.length)];
   blur = 20;
   progress = 0;
+  step = 0;
 
   const img = new Image();
   img.crossOrigin = "anonymous";
@@ -33,18 +34,26 @@ function startRound() {
   img.onload = () => {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     timerInterval = setInterval(() => {
-      progress++;
-      if (blur > 0) blur--;
+      step++;
+      progress = (step / steps) * 100;
       document.getElementById('progress').style.width = progress + '%';
+
+      if (blur > 0 && step % 20 === 0) blur--; // blur reduziert langsamer
       pixelate(img, blur);
-      if (progress >= 100) {
+
+      if (step >= steps) {
         clearInterval(timerInterval);
         showFeedback(false);
         nextRound();
       }
-    }, 100);
+    }, tick);
+  };
+
+  img.onerror = () => {
+    console.error("Bild konnte nicht geladen werden.");
   };
 }
+
 
 function pixelate(img, pixelSize) {
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
