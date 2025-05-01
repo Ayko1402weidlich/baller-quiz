@@ -15,9 +15,10 @@ let timerInterval;
 fetch("players.json")
   .then(res => res.json())
   .then(data => {
-    playerImages = shuffleArray(data);
+    playerImages = data;
     startRound();
-  })
+  });
+
   .catch(err => console.error("Fehler beim Laden der Spielerdaten:", err));
 
 function startRound() {
