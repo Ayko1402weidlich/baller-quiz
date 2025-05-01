@@ -118,8 +118,8 @@ function capitalize(str) {
 window.onload = () => {
   startRound();
 };
-let steps = 150; // statt 100
-let tick = 1000 / 10; // alle 100ms
+let steps = 400; // 40 Sekunden
+let tick = 100; // 100ms pro Schritt
 let step = 0;
 
 timerInterval = setInterval(() => {
@@ -134,4 +134,3 @@ timerInterval = setInterval(() => {
     nextRound();
   }
 }, tick);
-// Player guessing logic
