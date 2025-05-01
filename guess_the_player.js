@@ -118,4 +118,20 @@ function capitalize(str) {
 window.onload = () => {
   startRound();
 };
+let steps = 150; // statt 100
+let tick = 1000 / 10; // alle 100ms
+let step = 0;
+
+timerInterval = setInterval(() => {
+  step++;
+  progress = (step / steps) * 100;
+  document.getElementById('progress').style.width = progress + '%';
+  if (blur > 0) blur--;
+  pixelate(img, blur);
+  if (step >= steps) {
+    clearInterval(timerInterval);
+    showFeedback(false);
+    nextRound();
+  }
+}, tick);
 // Player guessing logic
