@@ -1,0 +1,23 @@
+[
+  {
+    "name": "ronaldo",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg"
+  },
+  {
+    "name": "messi",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Leo_Messi_WC2022.jpg"
+  },
+  {
+    "name": "neymar",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/Neymar_2018.jpg"
+  },
+  {
+    "name": "haaland",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Erling_Haaland_2023.jpg"
+  },
+  {
+    "name": "mbappe",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/88/Kylian_Mbapp%C3%A9_2019.jpg"
+  }
+  // … bis 250 Spieler
+]
