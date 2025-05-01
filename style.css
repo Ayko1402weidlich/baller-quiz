@@ -1,1 +1,41 @@
-body { background-color: #121212; color: white; font-family: Orbitron, sans-serif; }
+body {
+  background-color: #111;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 60px;
+  margin-bottom: 40px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 20px;
+  border: 2px solid limegreen;
+  border-radius: 10px;
+  background: none;
+  color: limegreen;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: limegreen;
+  color: black;
+}
