@@ -1,1 +1,1 @@
-console.log('Baller Quiz läuft');
+// Main game logic here

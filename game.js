@@ -1,1 +1,1 @@
-// JS für Spiellogik, Zeitbalken, Punkte
+// Game round logic
