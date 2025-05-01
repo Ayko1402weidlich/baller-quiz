@@ -17,28 +17,30 @@ const playerImages = [
 let currentRound = 0;
 let score = 0;
 let blur = 20;
-let progress = 0;
 let currentPlayer = null;
 let timerInterval;
+let steps = 400; // 40 Sekunden
+let tick = 100; // alle 100ms
+let step = 0;
 
 function startRound() {
   currentPlayer = playerImages[Math.floor(Math.random() * playerImages.length)];
   blur = 20;
-  progress = 0;
   step = 0;
+  document.getElementById('progress').style.width = '0%';
 
   const img = new Image();
   img.crossOrigin = "anonymous";
   img.src = currentPlayer.img;
 
   img.onload = () => {
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     timerInterval = setInterval(() => {
       step++;
-      progress = (step / steps) * 100;
+      let progress = (step / steps) * 100;
       document.getElementById('progress').style.width = progress + '%';
 
-      if (blur > 0 && step % 20 === 0) blur--; // blur reduziert langsamer
+      if (blur > 0 && step % 20 === 0) blur--;
+
       pixelate(img, blur);
 
       if (step >= steps) {
@@ -51,12 +53,14 @@ function startRound() {
 
   img.onerror = () => {
     console.error("Bild konnte nicht geladen werden.");
+    nextRound(); // weiter falls Bild fehlschlägt
   };
 }
 
-
 function pixelate(img, pixelSize) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
   let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   for (let y = 0; y < canvas.height; y += pixelSize) {
     for (let x = 0; x < canvas.width; x += pixelSize) {
@@ -64,12 +68,15 @@ function pixelate(img, pixelSize) {
       let r = imageData.data[i];
       let g = imageData.data[i + 1];
       let b = imageData.data[i + 2];
+
       for (let dy = 0; dy < pixelSize; dy++) {
         for (let dx = 0; dx < pixelSize; dx++) {
           let j = ((y + dy) * canvas.width + (x + dx)) * 4;
-          imageData.data[j] = r;
-          imageData.data[j + 1] = g;
-          imageData.data[j + 2] = b;
+          if (j < imageData.data.length) {
+            imageData.data[j] = r;
+            imageData.data[j + 1] = g;
+            imageData.data[j + 2] = b;
+          }
         }
       }
     }
@@ -114,7 +121,6 @@ function nextRound() {
       document.getElementById("answerBox").style.display = "none";
       document.getElementById("buzzer").style.display = "block";
       document.getElementById("feedback").innerText = "";
-      document.getElementById("progress").style.width = "0%";
       startRound();
     }
   }, 3000);
@@ -127,21 +133,3 @@ function capitalize(str) {
 window.onload = () => {
   startRound();
 };
-
-let steps = 400; // 40 Sekunden
-let tick = 100; // 100ms pro Schritt
-let step = 0;
-
-timerInterval = setInterval(() => {
-  step++;
-  progress = (step / steps) * 100;
-  document.getElementById('progress').style.width = progress + '%';
-  if (blur > 0) blur--;
-  pixelate(img, blur);
-  if (step >= steps) {
-    clearInterval(timerInterval);
-    showFeedback(false);
-    nextRound();
-  }
-}, tick);
-
