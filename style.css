@@ -10,14 +10,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   height: 100vh;
-  padding-top: 50px;
   text-align: center;
 }
 
 #topBar {
-  width: 90%;
+  width: 50%; /* Halb so breit wie vorher */
   margin-bottom: 20px;
 }
 
@@ -27,6 +26,14 @@ body {
   background-color: #333;
   border-radius: 15px;
   overflow: hidden;
+  margin-bottom: 20px;
+}
+
+canvas {
+  border-radius: 15px;
+  margin-bottom: 20px;
+  max-width: 90vw;
+  max-height: 90vh;
 }
 
 #progress {
