@@ -7,7 +7,7 @@ let currentRound = 0;
 let score = 0;
 let blur = 20;
 let step = 0;
-let steps = 400; // 40 Sekunden
+let steps = 250; // 100 = 10 Sekunden
 let tick = 100;
 let timerInterval;
 
