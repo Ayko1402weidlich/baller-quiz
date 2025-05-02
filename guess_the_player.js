@@ -11,15 +11,14 @@ let steps = 400; // 100 = 10 Sekunden
 let tick = 100;
 let timerInterval;
 
-// Lade JSON mit Spielern
 fetch("players.json")
-  .then(res => res.json())
+  .then(response => response.json())
   .then(data => {
     playerImages = data;
-    startRound();
-  });
+    startRound(); // oder deine Initialisierungsfunktion
+  })
+  .catch(error => console.error("Fehler beim Laden der Spielerdaten:", error));
 
-  .catch(err => console.error("Fehler beim Laden der Spielerdaten:", err));
 
 function startRound() {
   blur = 20;
