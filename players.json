@@ -1,11 +1,6 @@
 [
-  {
-    "name": "Benzema",
-    "image": "https://img.a.transfermarkt.technology/portrait/header/18922-1702414196.jpg?lm=1"
-  },
-
-  {
-    "name": "Ronaldo",
-    "image": "https://img.a.transfermarkt.technology/portrait/header/8198-1694609670.jpg?lm=1"
-  },
-  
+  { "name": "ronaldo", "image": "images/ronaldo.jpg" },
+  { "name": "messi", "image": "images/messi.jpg" },
+  { "name": "neymar", "image": "images/neymar.jpg" }
+ 
+]
