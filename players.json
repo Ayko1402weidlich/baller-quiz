@@ -2,5 +2,7 @@
   { "name": "ronaldo", "image": "images/ronaldo.jpg" },
   { "name": "messi", "image": "images/messi.jpg" },
   { "name": "neymar", "image": "images/neymar.jpg" }
- 
+  { "name": "haaland", "image": "images/haaland.jpg" }
+  { "name": "mbappe", "image": "images/mbappe.jpg" }
+  
 ]
